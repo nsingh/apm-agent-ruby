@@ -318,7 +318,7 @@ module ElasticAPM
 
       read = File.read(config_file)
       evaled = ERB.new(read).result
-      YAML.safe_load(evaled)
+      YAML.safe_load(evaled) rescue YAML.load(evaled)
     end
 
     def load_env
